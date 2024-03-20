@@ -9,8 +9,8 @@ The app helps the client to do the following:
 You can view the App here [INSERT APP]
 
 ## Index
-- [Dataset Content](#dataset-content)
 - [Business Requirements](#business-requirements)
+- [Dataset Content](#dataset-content)
 - [Hypothesis and validation](#hypothesis-and-validation)
 - [The rationale to map the business requirements to the Data Visualisations and ML tasks](#the-rationale-to-map-the-business-requirements-to-the-data-visualisations-and-ml-tasks)
 - [ML Business Case](#ml-business-case)
@@ -21,8 +21,22 @@ You can view the App here [INSERT APP]
     - [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
 - [Credits](#credits)
 
+
+## Business Requirements
+The client has received an inheritance from a deceased great-grandfather located in Ames, Iowa. They have asked us to help in maximising the sales price for the inherited properties.
+
+The client has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa which we will use for this project.
+
+* 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
+* 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa. The predictive model should aim to achieve an R2 value of 0.8 or higher.
+* 3 - Delivery of the final product in form of a deployed app that is easily accessible online and user friendly.
+
+These requirements can also be viewed as the user stories of the client/end user.
+
+INPUT USER STORIES HERE
+
 ## Dataset Content
-* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace. 
+* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
 |Variable|Meaning|Units|
@@ -51,16 +65,6 @@ You can view the App here [INSERT APP]
 |YearBuilt|Original construction date|1872 - 2010|
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
-
-
-## Business Requirements
-As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
-
-Although your friend has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa, and will provide you with that.
-
-* 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
-* 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
-
 
 ## Hypothesis and validation
 * List here your project hypothesis(es) and how you envision validating it (them).
