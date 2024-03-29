@@ -72,7 +72,7 @@ def page_sale_price_prediction():
         inherited_price_prediction = predict_sale_price(
             in_df, sale_price_vars, sale_price_pipe)
         total_value = inherited_price_prediction.sum()
-        total_value = float(total_value.round(0))
+        total_value = float(total_value.round(1))
         total_value = '${:,.2f}'.format(total_value)
 
         st.write(f"* The total value of the inherited homes is estimated"
