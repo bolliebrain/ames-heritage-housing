@@ -72,7 +72,7 @@ def page_sale_price_prediction():
         inherited_price_prediction = predict_sale_price(
             in_df, sale_price_vars, sale_price_pipe)
         total_value = inherited_price_prediction.sum()
-        total_value = float(total_value.round(1))
+        total_value = float(total_value.round(0))
         total_value = '${:,.2f}'.format(total_value)
 
         st.write(f"* The total value of the inherited homes is estimated"
@@ -104,7 +104,7 @@ def DrawInputsWidgets():
             min_value=1,
             max_value=10,
             value=int(df[feature].median()),
-            step=1
+            step=50
         )
     X_live[feature] = st_widget
 
@@ -115,7 +115,7 @@ def DrawInputsWidgets():
             min_value=int(df[feature].min()*percentageMin),
             max_value=int(df[feature].max()*percentageMax),
             value=int(df[feature].median()),
-            step=20
+            step=50
         )
     X_live[feature] = st_widget
 

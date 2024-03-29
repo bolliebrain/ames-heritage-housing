@@ -7,7 +7,7 @@ def page_project_hypothesis():
 
     st.success(
         f"**Hypothesis One:**\n\n"
-        f"* We suspect that a property's sale price correlates *strongly* "
+        f"* We believe that a property's sale price correlates strongly"
         f" with the square footage of property features" 
         f" and the overall quality of the home. \n\n"
         f"  * The correlation study of the dataset supports that. \n\n"

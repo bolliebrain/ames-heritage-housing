@@ -17,19 +17,19 @@ def page_sales_price_analysis():
 
     st.info("### Property Sale Price Analysis")
     st.success(
-        f"* The client is interested in understanding the correlation "
+        f"* Business Requirement 1 \n\n"
+        f" The client is interested in understanding the correlation "
         f" between a property's attributes/features and the sale price."
         f" Therefore, the client expects data visualization of the correlated"
-        f" variables against the sale prices for illustration "
-        f" (Business Requirement 1), \n"
+        f" variables against the sale prices."
     )
 
     # inspect data
     if st.checkbox("Inspect Sale Price Dataset"):
         st.write(
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
-            f"find below the first 15 rows.")
-        st.write(df.head(15))
+            f"find below the first 20 rows.")
+        st.write(df.head(20))
 
     st.write("---")
 
@@ -38,7 +38,7 @@ def page_sales_price_analysis():
     st.info(
         f"As per the clients request, a correlatiom study was\n"
         f"performed to better understand how the attributes\n"
-        f"are correlated to sale prices.\n\n"
+        f"correlate to the sale price.\n\n"
         f"The study concluded that the most correlated\n"
         f"variables were: **{vars_to_study}**"
         )

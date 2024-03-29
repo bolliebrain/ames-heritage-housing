@@ -34,7 +34,7 @@ def page_predict_price_ml():
         f" properties in Ames, Iowa. "
         f" The initial data set contained 23 features and 'SalePrice' as "
         f" the target."
-        f" Two features were dropped due to around 90% of data points missing."
+        f" Two features ('WoodDeckSF' and 'EnclosedPorch') were dropped due to aproximately 90% of data values missing."
         f" Feature engineering was carried out on the remaining data. "
         f" The model was then tuned using a hyperparameter search and was "
         f" found to "
