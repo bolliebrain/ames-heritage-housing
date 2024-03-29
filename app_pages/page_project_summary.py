@@ -3,7 +3,7 @@ import pandas as pd
 
 def page_project_summary():
     
-    st.write("#### 📝 Project Summary")
+    st.write("#### Project Summary")
 
     # background information taken from readme
     st.info(

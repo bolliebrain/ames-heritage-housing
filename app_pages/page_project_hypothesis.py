@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def page_project_hypothesis_body():
+def page_project_hypothesis():
 
     st.write("### Project Hypothesis")
 
@@ -17,7 +17,7 @@ def page_project_hypothesis_body():
         f" Area (GarageArea), Total Basement Area (TotalBsmtSF), "
         f" These are all features which are common to most "
         f" properties. \n\n"
-        
+
         f"**Hypothesis Two:**\n\n"
         f"* We hypothesize that we are able to predict a sale price with an "
         f" R2 value of at least 0.8.\n\n"
