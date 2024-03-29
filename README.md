@@ -67,8 +67,10 @@ INPUT USER STORIES HERE
 |SalePrice|Sale Price|34900 - 755000|
 
 ## Hypothesis and validation
-* List here your project hypothesis(es) and how you envision validating it (them).
-
+* Hypothesis One: We suspect that a property's sale price correlates strongly with the square footage with the square footage of property features and the overall quality of the home.
+* Hypothesis One Findings: The correlation study of the dataset supports that. The correlation study confirmed this and showed that the sale price correlates most strongly with Overall Quality (OverallQual),
+ Groundlevel Living area (GrLivArea), GarageArea (GarageArea), Total Basement Area (TotalBsmtSF). These are all features which are common to most properties.
+* Hypothesis Two: We hypothesize that we are able to predict a sale price with an R2 value of at least 0.8. The R2 analysis on the train and test sets confirms this.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 * List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
