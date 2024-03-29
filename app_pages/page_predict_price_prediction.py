@@ -1,77 +1,144 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-from src.data_management import load_house_prices_data, load_pkl_file
-from src.machine_learning.regression import (
-    regression_performance,
-    regression_evaluation,
-    regression_evaluation_plots)
+from datetime import date
+from src.data_management import (
+    load_house_prices_data,
+    load_pkl_file,
+    load_inherited_data)
+from src.machine_learning.regression import regression_performance
+from src.machine_learning.predictive_analysis_ui import predict_sale_price
 
 
-def page_predict_price_prediction():
+def page_sale_price_prediction():
 
-    # load regression pipeline files
-    vsn = 'v2'
+    # load predict sale price files
+    version = 'v2'
     sale_price_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/regression_pipeline.pkl"
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/regression_pipeline.pkl"
     )
-    sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/features_importance.png"
+    sale_price_vars = (
+        pd.read_csv(
+            f"outputs/ml_pipeline/sale_price_prediction/{version}/X_train.csv")
+        .columns
+        .to_list()
     )
-    X_train = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/X_train.csv")
-    X_test = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/X_test.csv")
-    y_train = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/y_train.csv").squeeze()
-    y_test = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/y_test.csv").squeeze()
 
-    st.write("### ML Pipeline: Predict Property Sale Price")
-    # display pipeline training summary conclusions
+    st.write("### Sale Price Predictor Interface")
     st.success(
-        f" A Regressor model was trained to predict the sale price of"
-        f" properties in Ames, Iowa. "
-        f" The initial data set contained 23 features and 'SalePrice' as "
-        f" the target."
-        f" Two features were dropped due to around 90% of data points missing."
-        f" Feature engineering was carried out on the remaining data. "
-        f" The model was then tuned using a hyperparameter search and was "
-        f" found to "
-        f" **meet the project requirement** with an R2 Score of 0.8 or "
-        f" better on "
-        f" both train and test sets. The model identified the four most "
-        f" important features necessary to acchieve the best predictive "
-        f" power. ")
-    st.write("---")
-
-    # show pipeline steps
-    st.write("### ML pipeline to predict property sale prices.")
-    st.code(sale_price_pipe)
-    st.write("---")
-
-    # show best features
-    st.write("### The features the model was trained on and their importance.")
-    st.write(X_train.columns.to_list())
-    st.image(sale_price_feat_importance)
-
-    st.write(
-        f"The model was ultimately trained on  the following four features: \n"
-        f"* Overall Quality (OverallQual) \n"
-        f"* Total Basement Area in squarefeet (TotalBsmtSF) \n"
-        f"* 2nd Floor Area in squarefeet (2ndFlrSF) \n"
-        f"* Garage Area in squarefeet (GarageArea) \n"
+        f"* The client is interested in predicting the potential sale "
+        f" prices"
+        f" for properties in Ames, Iowa, and specifically, she wants to"
+        f" determine a potential value for the properties she inherited "
+        f" (Business Requirement 2). \n"
+    )
+    st.info(
+        f"The price prediction will be based on four "
+        f" features of the property in question, which the client can input"
+        f" using the selections below. These features were identified by"
+        f" the machine learning model as the best features to predict Sale "
+        f" Price. They are similar to, but may differ slightly from, the "
+        f" variables "
+        f" identified as most correlated in the initial data analysis. This "
+        f" is because the model will carry out more complex analysis on the "
+        f" variables behind the scenes and identify the best variables to use"
+        f" for the prediction of the Sale Price. \n\n More information on the "
+        f" machine learning model and feature importance can be found on the "
+        f" **ML: Price Prediction** page. \n\n"
+        f"**Information on categorical features used in the prediction**\n\n"
+        f"* Overall Quality: 1 - Very Poor to 10 - Very Excellent.\n\n"
+        f"All three numerical features are measured in squarefeet."
     )
     st.write("---")
 
-    # evaluate performance on both sets
-    st.write("### Pipeline Performance")
-    regression_performance(X_train=X_train, y_train=y_train,
-                           X_test=X_test, y_test=y_test,
-                           pipeline=sale_price_pipe)
+    # Generate Live Data
+    X_live = DrawInputsWidgets()
 
-    st.write("**Performance Plot**")
-    regression_evaluation_plots(X_train=X_train, y_train=y_train,
-                                X_test=X_test,
-                                y_test=y_test, pipeline=sale_price_pipe,
-                                alpha_scatter=0.5)
+    # predict on live data
+    if st.button("Run Prediction"):
+        predict_sale_price(X_live, sale_price_vars, sale_price_pipe)
+
+    st.write("---")
+
+    st.write("### Price prediction for the clients inherited properties:")
+    in_df = load_inherited_data()
+    in_df = in_df.filter(sale_price_vars)
+
+    st.write("* Features of Inherited Homes")
+    st.write(in_df)
+
+    if st.button("Run Prediction of Inherited Homes"):
+        inherited_price_prediction = predict_sale_price(
+            in_df, sale_price_vars, sale_price_pipe)
+        total_value = inherited_price_prediction.sum()
+        total_value = float(total_value.round(1))
+        total_value = '${:,.2f}'.format(total_value)
+
+        st.write(f"* The total value of the inherited homes is estimated"
+                 f" to be:")
+        st.write(f"**{total_value}**")
+
+
+def DrawInputsWidgets():
+
+    # load dataset
+    df = load_house_prices_data()
+    percentageMin, percentageMax = 0.4, 2.0
+
+    # we create input widgets for the 4 best features
+    col01, col02 = st.beta_columns(2)
+    col03, col04 = st.beta_columns(2)
+
+    # We are using these features to feed the ML pipeline -
+    # create an empty DataFrame, which will be the live data
+    X_live = pd.DataFrame([], index=[0])
+
+    # from here on we draw the widget based on the variable type
+    # (numerical or categorical) and set initial values
+
+    with col01:
+        feature = "OverallQual"
+        st_widget = st.number_input(
+            label='Overall Quality',
+            min_value=1,
+            max_value=10,
+            value=int(df[feature].median()),
+            step=1
+        )
+    X_live[feature] = st_widget
+
+    with col02:
+        feature = "TotalBsmtSF"
+        st_widget = st.number_input(
+            label='Total Basement SQFT',
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=int(df[feature].max()*percentageMax),
+            value=int(df[feature].median()),
+            step=20
+        )
+    X_live[feature] = st_widget
+
+    with col03:
+        feature = "2ndFlrSF"
+        st_widget = st.number_input(
+            label='2nd Floor SQFT',
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=int(df[feature].max()*percentageMax),
+            value=int(df[feature].median()),
+            step=20
+        )
+    X_live[feature] = st_widget
+
+    with col04:
+        feature = "GarageArea"
+        st_widget = st.number_input(
+            label="Garage Area SQFT",
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=int(df[feature].max()*percentageMax),
+            value=int(df[feature].median()),
+            step=20
+        )
+    X_live[feature] = st_widget
+
+    return X_live

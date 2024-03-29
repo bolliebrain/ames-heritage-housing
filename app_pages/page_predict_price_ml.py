@@ -9,23 +9,23 @@ from src.machine_learning.regression import (
 
 
 def page_predict_price_ml():
+    version = "v2"
 
     # load regression pipeline files
-    vsn = 'v2'
     sale_price_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/regression_pipeline.pkl"
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/regression_pipeline.pkl"
     )
     sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/features_importance.png"
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/feature_importance.png"
     )
     X_train = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/X_train.csv")
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/X_train.csv")
     X_test = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/X_test.csv")
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/X_test.csv")
     y_train = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/y_train.csv").squeeze()
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/y_train.csv").squeeze()
     y_test = pd.read_csv(
-        f"outputs/ml_pipeline/sale_price_prediction/{vsn}/y_test.csv").squeeze()
+        f"outputs/ml_pipeline/sale_price_prediction/{version}/y_test.csv").squeeze()
 
     st.write("### ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
@@ -75,3 +75,4 @@ def page_predict_price_ml():
                                 X_test=X_test,
                                 y_test=y_test, pipeline=sale_price_pipe,
                                 alpha_scatter=0.5)
+

@@ -11,7 +11,7 @@ def load_house_prices_data():
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def load_inherited_data():
-    df = pd.read_csv("inputs/datasets/raw/house-price-20211124T154130Z-001/house-price/inherited_houses.inherited_houses.csv")
+    df = pd.read_csv("inputs/datasets/raw/house-price-20211124T154130Z-001/house-price/inherited_houses.csv")
     return df
 
 
