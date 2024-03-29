@@ -3,7 +3,7 @@ import streamlit as st
 
 def page_project_hypothesis():
 
-    st.write("### Project Hypothesis")
+    st.write("### Project Hypothesis and Validation")
 
     st.success(
         f"**Hypothesis One:**\n\n"

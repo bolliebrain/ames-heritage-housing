@@ -6,13 +6,12 @@ import joblib
 # this file is based on code found in the CI walkthrough projects
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def load_house_prices_data():
-    # we want the cleaned data without the NAN values
-    df = pd.read_csv("outputs/datasets/cleaned/house_prices_records.csv")
+    df = pd.read_csv("outputs/datasets/collection/house_prices_records.csv")
     return df
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def load_inherited_data():
-    df = pd.read_csv("inputs/datasets/inherited_houses.csv")
+    df = pd.read_csv("inputs/datasets/raw/house-price-20211124T154130Z-001/house-price/inherited_houses.inherited_houses.csv")
     return df
 
 

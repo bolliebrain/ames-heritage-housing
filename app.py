@@ -10,7 +10,7 @@ from app_pages.page_project_hypothesis import page_project_hypothesis
 app = MultiPage(app_name= "Ames Heritage Housing")
 
 app.add_page("Project Summary", page_project_summary)
-app.add_page("Sale Price Correlation Analysis", page_sales_price_analysis)
+app.add_page("Sale Price Analysis", page_sales_price_analysis)
 app.add_page("Sale Price Prediction", page_predict_price_ml)
 app.add_page("Hypothesis and Validation", page_project_hypothesis)
 app.add_page("ML: Sale Price Prediction", page_predict_price_prediction)

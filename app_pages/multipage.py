@@ -19,4 +19,6 @@ class MultiPage:
         st.title(self.app_name)
         page = st.sidebar.radio(
             'Menu', self.pages, format_func=lambda page: page['title'])
-        page['function']
+        page['function']()
+
+        st.sidebar.write("Select page to view")
