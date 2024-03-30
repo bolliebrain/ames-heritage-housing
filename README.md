@@ -6,7 +6,7 @@ The app helps the client to do the following:
 - View how house attributes correlate to sale prices.
 - Predict future sale prices for specific houses.
 
-You can view the App here [INSERT APP]
+You can view the App here [Ames Heritage Housing](https://ames-heritage-housing-3d294e81d937.herokuapp.com/)
 
 ## Index
 - [Business Requirements](#business-requirements)
