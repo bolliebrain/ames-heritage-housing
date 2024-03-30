@@ -11,7 +11,6 @@ def page_sales_price_analysis():
 
     # load data
     df = load_house_prices_data()
-    # The variable most strongly correlated with Sale Price/target
     
     vars_to_study = ['1stFlrSF', 'GarageArea', 'GrLivArea', 'OverallQual', 'TotalBsmtSF', 'YearBuilt']
 
@@ -43,7 +42,7 @@ def page_sales_price_analysis():
         f"variables were: **{vars_to_study}**"
         )
 
-    # code copied from sales price study notebook
+    # code copied from sales price analysis notebook
     df_eda = df.filter(vars_to_study + ['SalePrice'])
 
     if st.checkbox("Sale Price Study Visualizations"):

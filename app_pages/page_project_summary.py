@@ -5,7 +5,6 @@ def page_project_summary():
     
     st.write("#### Project Summary")
 
-    # background information taken from readme
     st.info(
         f"**Background information:**\n\n"
         f"You have been requested by your friend, who has received\n"
