@@ -157,27 +157,28 @@ Select the branch you want to deploy, then click Deploy Branch.
 The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 
 ### Main Data Analysis and Machine Learning Libraries
-(from requirements.txt)
-numpy==1.18.5
-pandas==1.4.2
-matplotlib==3.3.1
-seaborn==0.11.0
-ydata-profiling==4.4.0
-plotly==4.12.0
-ppscore==1.2.0
+*(from requirements.txt)*<br>
 
-streamlit==0.85.0
+numpy==1.18.5<br>
+pandas==1.4.2<br>
+matplotlib==3.3.1<br>
+seaborn==0.11.0<br>
+ydata-profiling==4.4.0<br>
+plotly==4.12.0<br>
+ppscore==1.2.0<br>
 
-feature-engine==1.0.2
-imbalanced-learn==0.8.0
-scikit-learn==0.24.2
-xgboost==1.2.1
-yellowbrick==1.3
-Jinja2==3.1.1
-MarkupSafe==2.0.1
-protobuf==3.20
-ipywidgets==8.0.2
-altair<5
+streamlit==0.85.0<br>
+
+feature-engine==1.0.2<br>
+imbalanced-learn==0.8.0<br>
+scikit-learn==0.24.2<br>
+xgboost==1.2.1<br>
+yellowbrick==1.3<br>
+Jinja2==3.1.1<br>
+MarkupSafe==2.0.1<br>
+protobuf==3.20<br>
+ipywidgets==8.0.2<br>
+altair<5<br>
 
 
 ## Credits 
