@@ -16,6 +16,7 @@ You can view the App here [Ames Heritage Housing](https://ames-heritage-housing-
 - [ML Business Case](#ml-business-case)
 - [Dashboard Design](#dashboard-design)
 - [Unfixed Bugs](#unfixed-bugs)
+- [Testing](#testing)
 - [Deployment](#deployment)
     - [Heroku](#heroku)
     - [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
@@ -140,6 +141,9 @@ How will the client benefit?
 * No unfixed bugs
 * Warning - Data Cleaning - CalculateCorrandPPS - This warning is to show that there isnt a strong correlation
 
+## Testing
+* PEP8 Compliance Testing was used to pass the files through. Those files include the 'app_pages'.
+
 ## Deployment
 ### Heroku
 Heroku
@@ -180,6 +184,22 @@ protobuf==3.20<br>
 ipywidgets==8.0.2<br>
 altair<5<br>
 
+- [NumPy](https://numpy.org/) was used for mathematical operations for examples determining means, modes, and standard deviations.
+- [Pandas](https://pandas.pydata.org/) was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
+- [ydata_profiling](https://ydata-profiling.ydata.ai/docs/master/index.html) was used to create an extensive Profile Report of the dataset.
+- [PPScore](https://pypi.org/project/ppscore/) was used to determine the predictive power score of the data features.
+- [MatPlotLib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) were used for constructing plots to visualize the data analysis, specifically the heatmaps, correlation plots and historgram of feature importance.
+- [Feature Engine](https://feature-engine.trainindata.com/en/latest/index.html) was used for various data cleaning and preparation tasks:
+  - Dropping Features, and Imputation of missing variables.
+  - Ordinal Encoding, Numerical Transformations, Assessment of outliers, and Smart Correlation Assessment of variables.
+- [SciKit Learn](https://scikit-learn.org/stable/) was used for many machine learning tasks:
+  - splitting train and test sets.
+  - feature processing and selection.
+  - gridsearch to determine the optimal regression model.
+  - gridsearch to determine the optimal hyperparameters.
+  - evaluation  of the model using r2_score.
+  - Principal Component Analysis and evaluation.
+- [XGBoost](https://xgboost.readthedocs.io/en/stable/) for the XGBoostRegressor algorithm.
 
 ## Credits 
 * Most of the code was adapted from the Churnometer walkthrough project by the Code Institute.
