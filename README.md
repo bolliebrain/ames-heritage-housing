@@ -79,104 +79,117 @@ These requirements can also be viewed as the user stories of the client/end user
 * Hypothesis Two: We hypothesize that we are able to predict a sale price with an R2 value of at least 0.8. The R2 analysis on the train and test sets confirms this.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+As a client, I have the following requirements:
+
+Business Requirement 1:
+
+* I want to analyse the house records data to determine which variables have a significant impact on the sale price.
+* I want to view the correlation coefficients on a heatmap to prioritize variables based on their importance for the sale price.
+* I would like to plot the important variables against the sale price to visually understand their correlation.
+Business Requirement 2:
+* I need easy access and navigation of the inherited houses data to locate specific house attributes.
+* I want an accurate ML model capable of predicting the prices of my four inherited houses in Ames, Iowa.
+* I need that the ML model provides precise price predictions for any other house in Ames, Iowa.
 
 
 ## ML Business Case
-* In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+What are the business requirements?
+* The client is interested in discovering how house attributes correlate with sale prices. Therefore, the client expects data visualizations of the correlated variables against the sale price.
+* The client is interested in predicting the house sale prices from her 4 inherited houses, and any other house in Ames, Iowa.
 
+Is there any business requirement that can be answered with conventional data analysis?
+* Yes, we can use conventional data analysis to investigate how house attributes are correlated with the sale prices.
+
+Does the client need a dashboard or an API endpoint?
+* The client needs a dashboard
+
+What does the client consider as a successful project outcome?
+* A study showing the most relevant variables correlated to sale prices
+* capability to predict the sale price for the 4 inherited houses, as well as any other house in Ames, Iowa.
+
+Can you break down the project into Epics and User Stories?
+* Information gathering and data collection.
+* Data visualization, cleaning, and preparation.
+* Model training, optimization and validation.
+* Dashboard planning, designing, and development.
+* Dashboard deployment and release.
+
+Ethical or Privacy concerns?
+* No. The client found a public dataset.
+
+Does the data suggest a particular model?
+* The data suggests a regressor where the target is the sale price.
+
+What are the model's inputs and intended outputs?
+* The inputs are house attribute information and the output is the predicted sale price.
+
+What are the criteria for the performance goal of the predictions?
+* We agreed with the client on an R2 score of at least 0.75 on the train set as well as on the test set.
+
+How will the client benefit?
+* The client will maximize the sales price for the inherited properties.
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
-* Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
+* Project Summary - This page describes the project, the dataset and the business requirements.
+* Sale Price Analysis - This page displays visualisations of the correlation between the house attibutes and house sale prices. (Business Requirement 1)
+* Sale Price Prediction - This page completes the two hypothesise. (Business Requirement 1 and 2)
+* Hypothesis and Validation - This page completes the two hypothesise.
+* ML: Sale Price Prediction - This page details the Machine Learning pipeline and the r2 performance
 
 ## Unfixed Bugs
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+* No unfixed bugs
+* Warning - Data Cleaning - CalculateCorrandPPS - This warning is to show that there isnt a strong correlation
 
 ## Deployment
 ### Heroku
-
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+Heroku
+The App live link is [Here](https://ames-heritage-housing-3d294e81d937.herokuapp.com/)
+Heroku might need to be set to Stack 20
+The project was deployed to Heroku using the following steps:
+Set the runtime.txt Python version to python-3.9.18
+Make a Heroku Procfile with runtime instuctions
+Make a setup.sh file with Streamlit configuration settings
+Create a requirements.txt with all libraries needed
+Log in to Heroku and create an App
+At the Deploy tab, select GitHub as the deployment method.
+Select your repository name and click Search. Once it is found, click Connect.
+Select the branch you want to deploy, then click Deploy Branch.
+The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 
 ### Main Data Analysis and Machine Learning Libraries
-* Here you should list the libraries you used in the project and provide example(s) of how you used these libraries.
+(from requirements.txt)
+numpy==1.18.5
+pandas==1.4.2
+matplotlib==3.3.1
+seaborn==0.11.0
+ydata-profiling==4.4.0
+plotly==4.12.0
+ppscore==1.2.0
+
+streamlit==0.85.0
+
+feature-engine==1.0.2
+imbalanced-learn==0.8.0
+scikit-learn==0.24.2
+xgboost==1.2.1
+yellowbrick==1.3
+Jinja2==3.1.1
+MarkupSafe==2.0.1
+protobuf==3.20
+ipywidgets==8.0.2
+altair<5
 
 
 ## Credits 
+* Most of the code was adapted from the Churnometer walkthrough project by the Code Institute.
+* I have also had inspiration from the following projects:
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+[annacakes](https://github.com/annacakes281/property-price-predictor)
+[knutinator](https://github.com/knutinator/heritage-housing)
+[Uriem](https://github.com/URiem/heritage-housing-PP5)
+[t-hullis](https://github.com/t-hullis/milestone-project-heritage-housing-issues)
+[faridjos](https://github.com/faridjos/milestone-project-heritage-housing-issues)
 
-### Content 
-
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign-up page are from This Open Source site
-- The images used for the gallery page were taken from this other open-source site
-
-
-
-## Acknowledgements (optional)
-* In case you would like to thank the people that provided support through this project.
-
-
-
-
-
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-1. Log into <a href="https://app.codeanywhere.com/" target="_blank" rel="noreferrer">CodeAnywhere</a> with your GitHub account.
-
-1. On your Dashboard, click on the New Workspace button
-
-1. Paste in the URL you copied from GitHub earlier
-
-1. Click Create
-
-1. Wait for the workspace to open. This can take a few minutes.
-
-1. Open a new terminal and <code>pip3 install -r requirements.txt</code>
-
-1. In the terminal type <code>pip3 install jupyter</code>
-
-1. In the terminal type <code>jupyter notebook --NotebookApp.token='' --NotebookApp.password=''</code> to start the jupyter server.
-
-1. Open port 8888 preview or browser
-
-1. Open the jupyter_notebooks directory in the jupyter webpage that has opened and click on the notebook you want to open.
-
-1. Click the button Not Trusted and choose Trust.
-
-Note that the kernel says Python 3. It inherits from the workspace so it will be Python-3.8.12 as installed by our template. To confirm this you can use <code>! python --version</code> in a notebook code cell.
-
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In your Cloud IDE, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
 
 
