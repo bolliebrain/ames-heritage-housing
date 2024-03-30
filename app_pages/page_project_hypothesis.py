@@ -13,7 +13,7 @@ def page_project_hypothesis():
         f"  * The correlation study of the dataset supports that. \n\n"
         f"  * The correlation study confirmed this and showed that the "
         f" sale price correlates most strongly with Overall Quality "
-        f" (OverallQual), Groundlevel Living area (GrLivArea), Garage "
+        f" (OverallQual), 2nd Floor square feet (2ndFlrSF), Garage "
         f" Area (GarageArea), Total Basement Area (TotalBsmtSF), "
         f" These are all features which are common to most "
         f" properties. \n\n"

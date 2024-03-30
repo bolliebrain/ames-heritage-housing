@@ -27,13 +27,20 @@ The client has received an inheritance from a deceased great-grandfather located
 
 The client has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa which we will use for this project.
 
-* 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
-* 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa. The predictive model should aim to achieve an R2 value of 0.8 or higher.
-* 3 - Delivery of the final product in form of a deployed app that is easily accessible online and user friendly.
+* 1 - USER STORY 1: The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
+* 2 - USER STORY 2: The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa. The predictive model should aim to achieve an R2 value of 0.8 or higher.
+* 3 - USER STORY 3: Delivery of the final product in form of a deployed app that is easily accessible online and user friendly.
 
 These requirements can also be viewed as the user stories of the client/end user.
 
-INPUT USER STORIES HERE
+## CRISP-DM Workflow
+
+* 1. EPIC 1 - Business Understanding - extensive discussion with the client and their expectations as well as the development of acceptance criteria. These are layed out in the Business Requirements below.
+* 2. EPIC 2 - Data Understanding - is the data needed to achieve the business requirements must be identified and understood. Are the data available to answer the business requirements? An initial statistical analysis helps to determine whether the data available are adequate to answer the business requirements. This task is carried out in the Data Cleaning Notebook.
+* 3. EPIC 3 - Clean and impute data, carry out feature engineering, such as transformations or scaling, reformat data if needed. This step is very important to ensure the most effective and accurate modelling outcome. This is carried out in the Data Cleaning and Feature Engineering Notebooks.
+* 4 EPIC 4 - Determine the model algorithms to be used. Split the data into train and test sets. Use train sets to validate various algorithms and add them using a hyperparamter search. 
+* 5 EPIC 5 - Use the test set to evaluate the model performance. Match these with the business acceptance criteria.
+* 6 EPIC 6 - Develop the streamlit app that will satisfy the business requirements determined in collaboration with the client and deploy the app online.
 
 ## Dataset Content
 * The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).
@@ -67,9 +74,8 @@ INPUT USER STORIES HERE
 |SalePrice|Sale Price|34900 - 755000|
 
 ## Hypothesis and validation
-* Hypothesis One: We suspect that a property's sale price correlates strongly with the square footage with the square footage of property features and the overall quality of the home.
-* Hypothesis One Findings: The correlation study of the dataset supports that. The correlation study confirmed this and showed that the sale price correlates most strongly with Overall Quality (OverallQual),
- Groundlevel Living area (GrLivArea), GarageArea (GarageArea), Total Basement Area (TotalBsmtSF). These are all features which are common to most properties.
+* Hypothesis One: We believe that a property's sale price correlates strongly with the square footage with the square footage of property features and the overall quality of the home.
+* Hypothesis One Findings: The correlation study of the dataset supports that. The correlation study confirmed this and showed that the sale price correlates most strongly with Overall Quality (OverallQual), GarageArea (GarageArea), Total Basement Area (TotalBsmtSF), 2ndFlrSF. These are all features which are common to most properties.
 * Hypothesis Two: We hypothesize that we are able to predict a sale price with an R2 value of at least 0.8. The R2 analysis on the train and test sets confirms this.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
